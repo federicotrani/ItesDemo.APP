@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ItesDemo.APP.Views.ProductoListaPage"
+             xmlns:vm="clr-namespace:ItesDemo.APP.ViewModels"             
+             x:DataType="vm:ProductoListaViewModel"
+             Title="{Binding Title}">
+    <Grid Margin="5" 
+          BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, 
+                                            Dark={StaticResource DarkBackground}}"
+          RowSpacing="0"
+          RowDefinitions="*, Auto">
+
+        <RefreshView Command="{Binding GetProductosCommand}"
+                     IsRefreshing="{Binding IsRefreshing}">
+            <CollectionView
+                ItemsSource="{Binding Productos}"
+                SelectionMode="Single" 
+                SelectedItem="{Binding ProductoSeleccion}"
+                SelectionChangedCommand="{Binding GoToDetailCommand}"
+                BackgroundColor="Transparent"
+                ItemTemplate="{StaticResource ProductTemplate}"
+                EmptyView="No data"
+                >
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout 
+                        Orientation="Vertical"
+                        HorizontalItemSpacing="10"
+                        Span="2"
+                        VerticalItemSpacing="20"
+                        />
+                </CollectionView.ItemsLayout>
+
+            </CollectionView>
+        </RefreshView>
+        <Button
+            Grid.Row="1"
+            Text="Get Products"
+            Margin="8"
+            Command="{Binding GetProductosCommand}"
+            Style="{StaticResource ButtonOutline}"
+            />
+        <ActivityIndicator 
+            Grid.RowSpan="2" 
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="CenterAndExpand"
+            IsVisible="{Binding IsBusy}"
+            IsRunning="{Binding IsBusy}"/>
+    </Grid>
+</ContentPage>
