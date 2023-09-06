@@ -81,10 +81,17 @@ public class ProductoListaViewModel : BaseViewModel
     {
         Application.Current.MainPage.Navigation.PopAsync();
     }
+
+    private void GoToDetail()
+    {
+        
+    }
     #endregion
 
     #region COMANDOS
     public ICommand GoToCancelarCommand => new Command(() => GoToCancelar());
+
+    public ICommand GoToDetailCommand => new Command(() => GoToDetail());
     public ICommand RefreshCommand { get; set; }
     #endregion
 }
