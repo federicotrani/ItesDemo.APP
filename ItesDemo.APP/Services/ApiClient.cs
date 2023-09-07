@@ -13,8 +13,7 @@ public class ApiClient
 
     public ApiClient()
     {
-        httpClient = new HttpClient();
-        //httpClient.BaseAddress = new Uri("http://192.168.1.101:5003/api");
+        httpClient = new HttpClient();        
     }
 
     public async Task<LoginResponseModel> ValidarLogin(string _usuario, string _password)
@@ -33,7 +32,7 @@ public class ApiClient
                         Encoding.UTF8, "application/json"
                     );
 
-            var result = await httpClient.PostAsync($"{URL}/usuarios/autenticar", loginParams).ConfigureAwait(false);
+            var result = await httpClient.PostAsync($"{URL}/usuario", loginParams).ConfigureAwait(false);
 
             var json = await result.Content.ReadAsStringAsync();
 

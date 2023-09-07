@@ -15,7 +15,7 @@ public class LoginViewModel : BaseViewModel
     public LoginViewModel()
     {
 #if DEBUG
-        Usuario = "prueba";
+        Usuario = "luis";
         Password = "1234";
 #endif
     }
