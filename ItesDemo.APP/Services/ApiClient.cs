@@ -8,7 +8,7 @@ namespace ItesDemo.APP.Services;
 public class ApiClient
 {
     static HttpClient httpClient;
-    private Uri URL = new Uri("http://192.168.1.106:5003/api");
+    private Uri URL = new Uri("http://192.168.1.102:5003/api");
     
 
     public ApiClient()
@@ -39,8 +39,8 @@ public class ApiClient
             LoginResponseModel responseLogin;
 
             if (result.StatusCode == System.Net.HttpStatusCode.OK)
-            {
-                responseLogin = JsonConvert.DeserializeObject<LoginResponseModel>(json);
+            {                
+                responseLogin = JsonConvert.DeserializeObject<LoginResponseModel>(json);             
 
                 return responseLogin;
             }

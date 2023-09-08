@@ -18,6 +18,11 @@ public class LoginViewModel : BaseViewModel
         Usuario = "luis";
         Password = "1234";
 #endif
+
+        // LoginCommand = new Command(async () => await Login());
+
+        LoginCommand = new(async () => await LoginAsync(),
+            () => !String.IsNullOrWhiteSpace(Usuario) && !String.IsNullOrWhiteSpace(Password));
     }
     #endregion
 
@@ -37,8 +42,7 @@ public class LoginViewModel : BaseViewModel
 
     #region METODOS
 
-
-    private async Task Login()
+    private async Task LoginAsync()
     {
         if (!IsBusy)
         {
@@ -50,15 +54,12 @@ public class LoginViewModel : BaseViewModel
 
                 var apiClient = new ApiClient();
 
-                var login = await apiClient.ValidarLogin(usuario, password);
+                var response = await apiClient.ValidarLogin(usuario, password);
 
-                if (login != null)
+                if (response != null)
                 {
-
-                    // var docente = await apiClient.ObtenerDatosPersona(usuario);
-
-                    // Transport.dni = usuario;
-                    // Transport.nombrePersona = docente.apenom;
+                    // guardo en memoria token para usar en consultas protegidas
+                    Configuration.AppConfiguration.Token = response.token;
 
                     Application.Current.MainPage = new NavigationPage(new InicioPage());
 
@@ -81,7 +82,7 @@ public class LoginViewModel : BaseViewModel
     #endregion
 
     #region COMANDOS
-    public ICommand LoginCommand => new Command(async () => await Login());
+    public Command LoginCommand { get; set; }
 
     #endregion
 }

@@ -1,55 +1,43 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             BackgroundColor="WhiteSmoke"
-             xmlns:vm="clr-namespace:ItesDemo.APP.ViewModels"
-             NavigationPage.HasNavigationBar="False"
+<ContentPage              
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ItesDemo.APP.ViewModels"
              x:Class="ItesDemo.APP.Views.LoginPage"
              x:DataType="vm:LoginViewModel"
              Title="{Binding Title}">
-    
+
     <ContentPage.BindingContext>
         <vm:LoginViewModel/>
     </ContentPage.BindingContext>
 
-    <StackLayout Margin="20">
-        
-        <Image Source="dotnetbot" WidthRequest="300" Margin="0,20"/>
-        <Label 
-            Text="Bienvenid@s" 
-            FontSize="20" 
-            TextColor="DarkMagenta" 
-            HorizontalOptions="Center" />
-        <Label 
-            Text="Ingrese sus Credenciales" 
-            FontSize="Default" 
-            TextColor="DarkMagenta" 
-            HorizontalOptions="Center" />
+    <VerticalStackLayout Margin="20">
 
-        <Label Text="USUARIO" FontSize="Micro" Margin="0,30,0,0" TextColor="Blue"/>
-        <Entry Placeholder="Ingresar su DNI" Text="{Binding Usuario}" TextColor="Black" />
-        <Label Text="PASSWORD" FontSize="Micro" TextColor="Blue"/>
-        <Entry Placeholder="Ingresar su Contraseña" TextColor="Black" Text="{Binding Password}" IsPassword="true"/>
-
-        <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
+        <Image Source="dotnet_bot.png" WidthRequest="150" />
         <Label 
-            IsVisible="{Binding IsBusy}" 
-            Text="Cargando..." 
-            FontSize="Micro" 
-            TextColor="Black"
-            HorizontalTextAlignment="Center" />
+            HorizontalOptions="Center" 
+            FontSize="22" 
+            Margin="0,20"
+            TextColor="DodgerBlue" 
+            Text="Bienvenid@s" />
 
-        <Button 
-            Command="{Binding LoginCommand}" 
-            IsEnabled="{Binding IsBusy}" 
-            Text="Ingresar" Margin="0,20" 
-            BackgroundColor="DarkSlateBlue" 
-            TextColor="White" />
+        <Entry Text="{Binding Usuario}" Placeholder="Nombre Usuario"/>
+        <Grid ColumnDefinitions="*,30">
+            <Entry 
+                x:Name="edtPassword"
+                Grid.Column="0"
+                Text="{Binding Password}" 
+                IsPassword="True" 
+                Placeholder="Contraseña" />
 
-        <Label 
-            Text="2023 - ITES Santa Rosa" 
-            FontSize="Default" 
-            TextColor="DarkMagenta" 
-            HorizontalOptions="Center" />
-    </StackLayout>
+            <Image x:Name="imgPassword" Grid.Column="1" Source="visibility" HeightRequest="{OnPlatform Android=25, iOS=30}">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                </Image.GestureRecognizers>
+            </Image>
+        </Grid>
+
+        <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
+        <Button Text="Iniciar Sesión" Command="{Binding LoginCommand}" Margin="0,20"/>
+    </VerticalStackLayout>
 </ContentPage>

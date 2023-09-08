@@ -90,7 +90,6 @@ public class ProductoListaViewModel : BaseViewModel
 
     #region COMANDOS
     public ICommand GoToCancelarCommand => new Command(() => GoToCancelar());
-
     public ICommand GoToDetailCommand => new Command(() => GoToDetail());
     public ICommand RefreshCommand { get; set; }
     #endregion
