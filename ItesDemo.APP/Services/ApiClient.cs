@@ -86,6 +86,7 @@ public class ApiClient
     {
         try
         {
+            httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer"+Configuration.AppConfiguration.Token);
             var json = await httpClient.GetStringAsync($"{URL}/productos");
 
             var result = JsonConvert.DeserializeObject<IEnumerable<ProductoModel>>(json);
