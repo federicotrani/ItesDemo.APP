@@ -8,7 +8,7 @@ public partial class ProductoListaPage : ContentPage
 	{
 		InitializeComponent();
 
-		ProductoListaViewModel viewModel = new ProductoListaViewModel();
-		BindingContext = viewModel;
+		// ProductoListaViewModel viewModel = new ProductoListaViewModel();
+		// BindingContext = viewModel;
 	}
 }

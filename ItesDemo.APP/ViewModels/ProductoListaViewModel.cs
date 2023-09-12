@@ -64,13 +64,7 @@ public class ProductoListaViewModel : BaseViewModel
 
         var apiClient = new ApiClient();
 
-        var lista = await apiClient.ObtenerProductos();
-
-        /*foreach (AlumnosMateriaModel model in alumnos)
-        {
-            model.IdEstadoAsistencia = 2;
-            model.EstadoAsistencia = "Asistencia Confirmada";
-        }*/
+        var lista = await apiClient.ObtenerProductos();        
 
         Productos = new ObservableCollection<ProductoModel>(lista);
 
@@ -90,7 +84,7 @@ public class ProductoListaViewModel : BaseViewModel
 
     #region COMANDOS
     public ICommand GoToCancelarCommand => new Command(() => GoToCancelar());
-    public ICommand GoToDetailCommand => new Command(() => GoToDetail());
+    public ICommand GoToDetailCommand => new Command(() => GoToDetail());    
     public ICommand RefreshCommand { get; set; }
     #endregion
 }

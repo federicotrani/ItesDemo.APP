@@ -49,8 +49,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Resources\Images\visibility.svg" />
-	  <None Remove="Resources\Images\visibility_off.svg" />
+	  <None Remove="Resources\Images\home_24.png" />
+	  <None Remove="Resources\Images\info_24.png" />
+	  <None Remove="Resources\Images\logout_24.png" />
+	  <None Remove="Resources\Images\mostrar_24.png" />
+	  <None Remove="Resources\Images\ocultar_24.png" />
+	  <None Remove="Resources\Images\order_list_24.png" />
+	  <None Remove="Resources\Images\settings_24.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -59,6 +64,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Views\AcercaPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\InicioPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

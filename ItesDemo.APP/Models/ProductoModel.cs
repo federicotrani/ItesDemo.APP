@@ -2,10 +2,11 @@
 
 public class ProductoModel
 {
-    public int Id { get; set; }
-    public string Name { get; set; }
-    public string ReleaseDate { get; set; }
-    public float OriginalPrice { get; set; }
-    public float Discount { get; set; }
-    public string PictureUrl { get; set; }
+    public int id { get; set; }
+    public string nombre { get; set; }
+    public string tipo { get; set; }
+    public string descripcion { get; set; }
+    public decimal precio { get; set; }
+    public string urlImagen { get; set; }
+    public int stock { get; set; }
 }

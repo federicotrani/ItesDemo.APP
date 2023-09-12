@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage              
-             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:vm="clr-namespace:ItesDemo.APP.ViewModels"
-             x:Class="ItesDemo.APP.Views.LoginPage"
-             x:DataType="vm:LoginViewModel"
-             Title="{Binding Title}">
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:ItesDemo.APP.ViewModels"
+    x:Class="ItesDemo.APP.Views.LoginPage"
+    x:DataType="vm:LoginViewModel"
+    Title="{Binding Title}">
 
     <ContentPage.BindingContext>
         <vm:LoginViewModel/>
@@ -22,20 +22,13 @@
             Text="Bienvenid@s" />
 
         <Entry Text="{Binding Usuario}" Placeholder="Nombre Usuario"/>
-        <Grid ColumnDefinitions="*,30">
+        
             <Entry 
-                x:Name="edtPassword"
-                Grid.Column="0"
+                
                 Text="{Binding Password}" 
                 IsPassword="True" 
-                Placeholder="Contraseña" />
-
-            <Image x:Name="imgPassword" Grid.Column="1" Source="visibility" HeightRequest="{OnPlatform Android=25, iOS=30}">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-                </Image.GestureRecognizers>
-            </Image>
-        </Grid>
+                Placeholder="Contraseña" 
+         />       
 
         <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
         <Button Text="Iniciar Sesión" Command="{Binding LoginCommand}" Margin="0,20"/>
