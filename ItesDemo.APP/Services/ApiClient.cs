@@ -1,4 +1,5 @@
-﻿using ItesDemo.APP.Models;
+﻿using ItesDemo.APP.Configuration;
+using ItesDemo.APP.Models;
 using Newtonsoft.Json;
 using System.Diagnostics;
 using System.Text;
@@ -8,7 +9,7 @@ namespace ItesDemo.APP.Services;
 public class ApiClient
 {
     static HttpClient httpClient;
-    private Uri URL = new Uri("http://192.168.3.8:5003/api");
+    private Uri URL = new Uri("http://192.168.1.103:5003/api");
     
 
     public ApiClient()
@@ -40,7 +41,9 @@ public class ApiClient
 
             if (result.StatusCode == System.Net.HttpStatusCode.OK)
             {                
-                responseLogin = JsonConvert.DeserializeObject<LoginResponseModel>(json);             
+                responseLogin = JsonConvert.DeserializeObject<LoginResponseModel>(json);
+
+                AppConfiguration.Token = responseLogin.token;
 
                 return responseLogin;
             }
@@ -86,7 +89,7 @@ public class ApiClient
     {
         try
         {
-            // httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer"+Configuration.AppConfiguration.Token);
+            httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer"+Configuration.AppConfiguration.Token);
             var json = await httpClient.GetStringAsync($"{URL}/producto");
 
             var result = JsonConvert.DeserializeObject<IEnumerable<ProductoModel>>(json);

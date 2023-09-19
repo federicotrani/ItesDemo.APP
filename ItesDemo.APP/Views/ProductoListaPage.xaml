@@ -19,9 +19,8 @@
                 SelectionMode="Single" 
                 SelectedItem="{Binding ProductoSeleccion}"
                 SelectionChangedCommand="{Binding GoToDetailCommand}"
-                BackgroundColor="Transparent"
-                
-                EmptyView="No hay datos"
+                BackgroundColor="Transparent"                
+                EmptyView="SIN DATOS DISPONIBLES"
                 >
 
                 <CollectionView.ItemTemplate>

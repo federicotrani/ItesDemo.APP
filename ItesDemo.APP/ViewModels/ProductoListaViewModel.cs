@@ -1,5 +1,6 @@
 ﻿using ItesDemo.APP.Models;
 using ItesDemo.APP.Services;
+using ItesDemo.APP.Views;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
@@ -78,7 +79,7 @@ public class ProductoListaViewModel : BaseViewModel
 
     private void GoToDetail()
     {
-        
+        Application.Current.MainPage.Navigation.PushAsync(new ProductoDetallePage(productoSeleccion));
     }
     #endregion
 
