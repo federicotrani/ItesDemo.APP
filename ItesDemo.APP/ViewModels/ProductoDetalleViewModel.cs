@@ -1,4 +1,5 @@
 ﻿using ItesDemo.APP.Models;
+using ItesDemo.APP.Views;
 using System.Windows.Input;
 
 namespace ItesDemo.APP.ViewModels;
@@ -6,7 +7,7 @@ namespace ItesDemo.APP.ViewModels;
 public class ProductoDetalleViewModel : BaseViewModel
 {
     #region VARIABLES
-    private string myVar;
+    // private string myVar;
     private ProductoModel productoSeleccion;
     #endregion
 
@@ -30,6 +31,8 @@ public class ProductoDetalleViewModel : BaseViewModel
     private async Task GoToBack()
     {
         await Application.Current.MainPage.Navigation.PopAsync();
+        // await Application.Current.MainPage.Navigation.PushAsync(new ProductoListaPage());
+
     }
     #endregion
 
